@@ -1,0 +1,101 @@
+﻿@model OnlineShoppingApp.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<hr />
+<div class="row">
+    <div class="col-4">
+        <h2 class="alert alert-info">Create New Product</h2>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                @*<input asp-for="Category" class="form-control" />*@
+                <select asp-for="Category">
+                    <option>--Select Item--</option>
+                    <option value="Necklece">Necklece</option>
+                    <option value="EarRing">Ear Ring</option>
+                    <option value="FingerRing">Finger Ring</option>
+                    <option value="NosePin">Nose Pin</option>
+                    <option value="Bracelet">Bracelet</option>
+                    <option value="Locket">Locket</option>
+                    <option value="Payel">Payel</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductCode" class="control-label"></label>
+                <input asp-for="ProductCode" class="form-control" />
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTitle" class="control-label"></label>
+                <input asp-for="ProductTitle" class="form-control" />
+                <span asp-validation-for="ProductTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="file" name="file" asp-for="ProductImagePath" class="form-control" />
+                <span asp-validation-for="ProductImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductPrice" class="control-label"></label>
+                <input asp-for="ProductPrice" class="form-control" />
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductAskPrice" class="control-label"></label>
+                <input asp-for="ProductAskPrice" class="form-control" />
+                <span asp-validation-for="ProductAskPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label" style="margin-bottom: 20px; font-size:larger">Available : </label>
+                <input asp-for="Status" type="checkbox" value="Available" style="width: 30px; height:20px; margin-top: 20px" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save Product" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        <h2 class="alert alert-info">Create New Role</h2>
+        <form asp-controller="Admin" asp-action="CreateRole" method="post">
+            <label>Role Name : </label>
+            <input type="text" name="userrole" value="" class="form-control" placeholder="Please Enter Role...." /><br />
+            <button class="btn btn-primary" type="submit">Create Role</button>
+        </form>
+    </div>
+    <div class="col-4">
+        <h2 class="alert alert-info">Role Assign </h2>
+        <form asp-controller="Admin" asp-action="RoleAssign" method="post">
+            <label>User Name: </label>
+            <select name="userdata" class="form-control" style="width: 150px">
+                <option>---Select---</option>
+                @foreach (var u in ViewBag.User)
+                {
+                    <option value="@u.UserName">@u.UserName</option>
+                }
+            </select><br />
+            <label>Assign Role: </label>
+            <select name="userrole" class="form-control" style="width: 150px">
+                <option>---Select---</option>
+                @foreach (var u in ViewBag.Role)
+                {
+                    <option value="@u.NormalizedName">@u.NormalizedName</option>
+                }
+            </select><br />
+            <button class="btn btn-success" style="width: auto" type="submit">Role Assign</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

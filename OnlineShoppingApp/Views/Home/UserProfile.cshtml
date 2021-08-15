@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-2" style="background-color: antiquewhite; margin-top: 20px">
+        <div>
+            <h5 style="text-decoration: underline"><b>Your Address.</b></h5>
+            <h5>@ViewBag.UserAddressDataItem</h5>
+        </div>
+        <div>
+            <h5 style="text-decoration: underline"><b>Your Phone No.</b></h5>
+            <h5>@ViewBag.UserPhoneNO</h5>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <table class="table" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <td>
+                        <b>Product Image</b>
+                    </td>
+                    <td>
+                        <b>Product Code</b>
+                    </td>
+                    <td>
+                        <b>Order Date & Time</b>
+                    </td>
+                    <td>
+                        <b> Product Price</b>
+                    </td>
+                    <td>
+                        <b> Delivery Status</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.UserProductList)
+                {
+                <tr>
+                    <td>
+                        <img src="~/images/@item.ProductImage" alt="Card image" style="width:90px; height:100px">
+                    </td>
+                    <td>
+                        @item.ProductCode
+                    </td>
+                    <td>
+                        @item.OrderDateTime
+                    </td>
+                    <td>
+                        Tk @item.ProductPrice
+                    </td>
+                    <td>
+                        <b>@item.Status</b>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Cancel", "Delete", "Home", new { id = @item.Id }, new { @class = "btn btn-danger", style = "width: 80px" })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

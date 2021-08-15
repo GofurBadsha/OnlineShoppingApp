@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 20px; text-decoration: underline">All Cart Product List</h2>
+
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-10">
+        <table class="table table-bordered table-hover" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <td>
+                        <b>Product Image</b>
+                    </td>
+                    <td>
+                        <b>Quntity</b>
+                    </td>
+                    <td>
+                        <b>Price</b>
+                    </td>
+                    <td>
+                        <b>Product Title</b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in @ViewBag.ProductData)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/images/@item.ProductImage" alt="Card image" style="width:90px; height:100px">
+                        </td>
+                        <td>
+                            @item.Quntity
+                        </td>
+                        <td>
+                            Tk @item.ProductPrice
+                        </td>
+                        <td>
+                            <b>@item.ProductTitle</b>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Cancel", "AddToCartDelete", "Home", new { id = @item.Id }, new { @class = "btn btn-danger", style = "width: 80px; margin-left: 10px" })
+                            @Html.ActionLink("Order Now", "CheckOut", "Home", new { cart_id = @item.Id, P_id = @item.ProductId }, new { @class = "btn btn-primary", style = "width: auto; margin-top: 10px" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

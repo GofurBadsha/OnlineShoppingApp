@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OnlineShoppingApp</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
@@ -13,15 +17,26 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+
+
+
+
 </head>
+
+
 <body>
+    <style>
+        .nav-item {
+            font-size: larger;
+        }
+    </style>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom bg-info box-shadow mb-3 fixed-top" style=" font: larger; color: white">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineShoppingApp</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Asstha</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,28 +45,202 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            @{
+                                if (@ViewBag.userName == "Badsha")
+                                {
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="Create">Admin</a>
+                                }
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Necklece">Necklece</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="EarRing">Ear Ring</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="FingerRing">Finger Ring</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Bracelete</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Locket">Locket</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Payel">Payel</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - OnlineShoppingApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="container body-content" style="margin-top: 50px; margin-left: 210px">
+        @RenderBody()
+    </div>
+    <footer style="background-color: #232B3B; color: white; height: 200px; width: 1160px; margin-top: 30px; margin-left: 210px">
+        <div class="row" style="margin-left: 20px">
+            @*<div class="col-md-1"></div>*@
+            <div class="col-2">
+                <div>CUSTOMER SERVICE</div>
+                <ul>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">New products</a></li>
+                    <li><a href="/Home/Contact/">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-2">
+                <div style="margin-left: 20px">MY ACCOUNT</div>
+                <ul>
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Addresses</a></li>
+                    <li><a href="#">Shopping cart</a></li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-2">
+                <div style="margin-left: 20px">INFORMATION</div>
+                <ul>
+                    <li><a href="#">Cloud Services</a></li>
+                    <li><a href="/Home/Privacy/">Privacy notice</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="/Home/About/">About Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-2">
+                <div style="margin-left: 1px">OFFERED SERVICES</div>
+                <ul>
+                    <li><a href="#">All Offers</a></li>
+                    <li><a href="#">New Offer</a></li>
+                    <li><a href="#">Big Offer</a></li>
+                    <li><a href="#">Your Offer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px">
+            <div class="col-md-6" style="text-align: left"> <p>&copy; 2021 - Asstha Easy Shop</p></div>
+            <div class="col-md-6" style="text-align: right"> Develop & Design by Badsha</div>
         </div>
     </footer>
+    <div class="row">
+        <div class="sidenav">
+            <div class="row">
+                <div class="col-8"> <a asp-area="" asp-controller="Home" asp-action="Necklece">Necklece </a></div>
+                <div class="col-4"><h6 style="margin-top: 10px">(@ViewBag.NeckleceQnt)</h6></div>
+            </div>
+            <div class="row">
+                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="EarRing">Ear Ring</a></div>
+                <div class="col-4"><h6 style="margin-top: 10px">(@ViewBag.EarRingQnt)</h6></div>
+            </div>
+            <div class="row">
+                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="FingerRing">Finger Ring</a></div>
+                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.FingerRingQnt)</h6></div>
+            </div>
+            <div class="row">
+                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Bracelet">Bracelet</a></div>
+                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.BraceletQnt)</h6></div>
+            </div>
+            <div class="row">
+                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Locket">Locket</a></div>
+                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.LocketeQnt)</h6></div>
+            </div>
+            <div class="row">
+                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Locket">Payele</a></div>
+                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.PayeleQnt)</h6></div>
+            </div>
+            @*<button class="dropdown-btn">
+                    Dropdown
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>*@
+        </div>
+    </div>
+    <style>
+        .sidenav {
+            margin-top: 20px;
+            height: 100%;
+            width: 205px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: seashell;
+            overflow-x: hidden;
+            padding-top: 50px;
+        }
+            /* Style the sidenav links and the dropdown button */
+            .sidenav a, .dropdown-btn {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 20px;
+                color: #818181;
+                display: block;
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                outline: none;
+            }
+
+                /* On mouse-over */
+                .sidenav a:hover, .dropdown-btn:hover {
+                    color: black;
+                }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: white;
+            padding-left: 8px;
+        }
+
+        .sidenav a, .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -72,6 +261,7 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>

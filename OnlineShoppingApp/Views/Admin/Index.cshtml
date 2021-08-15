@@ -1,0 +1,94 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IEnumerable<OnlineShoppingApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 20px">Product List</h2>
+
+<p>
+    @Html.ActionLink("Create New Product", "Create", "Admin")
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                <h5><b>Category</b></h5>
+            </th>
+            <th>
+                <h5><b>Code</b></h5>
+            </th>
+            <th>
+                <h5><b>Product Title</b></h5>
+            </th>
+            <th>
+                <h5><b>Price</b></h5>
+            </th>
+            <th>
+                <h5><b>APrice</b></h5>
+            </th>
+            <th>
+                <h5><b>Images</b></h5>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductTitle)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ProductImagePath)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductAskPrice)
+                </td>
+                <td>
+                    <img src="~/images/@item.ProductImagePath" alt="Card image" style="width:90px; height:100px">
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="d-flex justify-content-end" style="text-align: right">
+    <ul class="pagination pagination-sm">
+        @{
+            int i;
+        }
+        @for (i = 1; i <= ViewBag.total; i++)
+        {
+            if (i == ViewBag.CurrentPage)
+            {
+                <li class="page-item active">
+                    <span class="page-link">@i</span>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @Html.ActionLink(i.ToString(), "Index", "Admin", new { id = @i }, new { @class = "page-link" })
+                </li>
+            }
+        }
+    </ul>
+</div>

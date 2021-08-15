@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 30px">Product Details</h2>
+<div class="row">
+
+    <div class="col-md-4">
+        <img src="@Url.Content("~/images/" + ViewBag.data)" width="400" height="500" />
+    </div>
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-5">
+        <h5>@ViewBag.ProductTitale</h5>
+        <h2><b>Tk  @Model.ProductPrice</b></h2>
+        @{
+            int offprice = 100 * (Model.ProductAskPrice - Model.ProductPrice) / Model.ProductAskPrice;
+        }
+        <h4 style="color: red"><s>Tk  @Model.ProductAskPrice</s> ( @offprice % off )</h4>
+        <br><br>
+        <dev>
+            <h4>
+                <label for="cars">Quantity : </label>
+                <select name="cars" id="cars" style="width: 65px; height: 36px">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </h4>
+        </dev>
+
+        <div style="margin-top: 20px">
+            @*<a asp-area="Customer" asp-controller="Home" asp-action="ProductConfirmOrder" class="btn btn-primary">Buy Now</a>*@
+            @Html.ActionLink("Confirm Order", "OderProduct", "Home", new { id = Model.Id }, new { @class = "btn btn-primary", style = "margin-right: 20px; width: 120px" })
+            @Html.ActionLink("Add to Cart", "AddToCart", "Home", new { id = Model.Id, qnt = 1 }, new { @class = "btn btn-danger", style = "width: 120px" })
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="col-md-2" style="background-color: antiquewhite;">
+        <div>
+            <h5 style="text-decoration: underline"><b>Delivery Address</b></h5>
+            <h5>@ViewBag.UserAddressDataItem</h5>
+        </div>
+        <br />
+        <div>
+            <h5 style="text-decoration: underline"><b>Home Delivery</b></h5>
+            <h6><b>Inside Dhaka ৳ 60</b></h6>
+            <h6>(1-3 days)</h6>
+            <h6 style="margin-top:20px"><b>Outside Dhaka ৳ 130</b></h6>
+            <h6>(3-7 days)</h6>
+        </div>
+        <br />
+        <div>
+            <h6><b style="text-decoration: underline">Cash on Delivery Available.</b></h6>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    $(document).ready(function () {
+    $("#cars").Change(function({
+    
+    
+    }))
+
+    
+    }
+    <script src="~/js/site.js"></script>
+}*@
+
