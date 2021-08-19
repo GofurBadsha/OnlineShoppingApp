@@ -50,6 +50,7 @@ namespace OnlineShoppingApp.Controllers
 
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
+
             ViewBag.userName = _userManager.GetUserName(User);
 
             var data = _context.Products
@@ -188,6 +189,8 @@ namespace OnlineShoppingApp.Controllers
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
 
+            ViewBag.userName = _userManager.GetUserName(User);
+
             var data = _context.Products.Where(c => c.Category == "Necklece").OrderBy(c => c.Id).Skip((page - 1) * 20).Take(20);
             int totalpage = (int)Math.Ceiling((decimal)data.Count() / 20);
             ViewBag.total = totalpage;
@@ -218,6 +221,8 @@ namespace OnlineShoppingApp.Controllers
 
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
+
+            ViewBag.userName = _userManager.GetUserName(User);
 
             var data = _context.Products.Where(c => c.Category == "EarRing").OrderBy(c => c.Id).Skip((page - 1) * 20).Take(20);
             int totalpage = (int)Math.Ceiling((decimal)data.Count() / 20);
@@ -250,6 +255,8 @@ namespace OnlineShoppingApp.Controllers
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
 
+            ViewBag.userName = _userManager.GetUserName(User);
+
             var data = _context.Products.Where(c => c.Category == "FingerRing").OrderBy(c => c.Id).Skip((page - 1) * 20).Take(20);
             int totalpage = (int)Math.Ceiling((decimal)data.Count() / 20);
             ViewBag.total = totalpage;
@@ -280,6 +287,8 @@ namespace OnlineShoppingApp.Controllers
 
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
+
+            ViewBag.userName = _userManager.GetUserName(User);
 
             var data = _context.Products.Where(c => c.Category == "Locket").OrderBy(c => c.Id).Skip((page - 1) * 20).Take(20);
             int totalpage = (int)Math.Ceiling((decimal)data.Count() / 20);
@@ -313,6 +322,8 @@ namespace OnlineShoppingApp.Controllers
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
 
+            ViewBag.userName = _userManager.GetUserName(User);
+
             var data = _context.Products.Where(c => c.Category == "Payel").OrderBy(c => c.Id).Skip((page - 1) * 20).Take(20);
             int totalpage = (int)Math.Ceiling((decimal)data.Count() / 20);
             ViewBag.total = totalpage;
@@ -344,6 +355,8 @@ namespace OnlineShoppingApp.Controllers
 
             var AddToCardCount = _context.AddToCarts.Where(n => n.UserName == _userManager.GetUserName(User)).Count();
             ViewBag.Count = AddToCardCount;
+
+            ViewBag.userName = _userManager.GetUserName(User);
 
             var data = _context.Products.Where(c => c.Category == "Bracelet").OrderBy(c => c.Id).Skip((page - 1) * 20).Take(20);
             int totalpage = (int)Math.Ceiling((decimal)data.Count() / 20);

@@ -23,13 +23,13 @@
                 <h5><b>Code</b></h5>
             </th>
             <th>
-                <h5><b>Product Title</b></h5>
+                <h5 style="text-align: center"><b>Product Title</b></h5>
             </th>
             <th>
                 <h5><b>Price</b></h5>
             </th>
             <th>
-                <h5><b>APrice</b></h5>
+                <h5><b>D_Price</b></h5>
             </th>
             <th>
                 <h5><b>Images</b></h5>
@@ -63,8 +63,8 @@
                     <img src="~/images/@item.ProductImagePath" alt="Card image" style="width:90px; height:100px">
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-primary" style="width:70px" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" style="margin-top:5px" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }

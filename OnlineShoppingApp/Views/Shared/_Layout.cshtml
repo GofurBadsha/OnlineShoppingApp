@@ -65,7 +65,7 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="FingerRing">Finger Ring</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Bracelete</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Bracelet">Bracelete</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Locket">Locket</a>
@@ -130,43 +130,63 @@
             <div class="col-md-6" style="text-align: right"> Develop & Design by Badsha</div>
         </div>
     </footer>
-    <div class="row">
-        <div class="sidenav">
+    @{
+        if (@ViewBag.userName == "Badsha")
+        {
             <div class="row">
-                <div class="col-8"> <a asp-area="" asp-controller="Home" asp-action="Necklece">Necklece </a></div>
-                <div class="col-4"><h6 style="margin-top: 10px">(@ViewBag.NeckleceQnt)</h6></div>
+                <div class="sidenav">
+                    <div class="row">
+                        <a asp-area="" asp-controller="Admin" asp-action="Create">New Product Entry</a>
+                    </div>
+                    <div class="row">
+                        <a asp-area="" asp-controller="Admin" asp-action="Index">All Product</a>
+                    </div>
+                </div>
             </div>
+        }
+        else
+        {
+
             <div class="row">
-                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="EarRing">Ear Ring</a></div>
-                <div class="col-4"><h6 style="margin-top: 10px">(@ViewBag.EarRingQnt)</h6></div>
+                <div class="sidenav">
+                    <div class="row">
+                        <div class="col-8"> <a asp-area="" asp-controller="Home" asp-action="Necklece">Necklece </a></div>
+                        <div class="col-4"><h6 style="margin-top: 10px">(@ViewBag.NeckleceQnt)</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="EarRing">Ear Ring</a></div>
+                        <div class="col-4"><h6 style="margin-top: 10px">(@ViewBag.EarRingQnt)</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="FingerRing">Finger Ring</a></div>
+                        <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.FingerRingQnt)</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Bracelet">Bracelet</a></div>
+                        <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.BraceletQnt)</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Locket">Locket</a></div>
+                        <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.LocketeQnt)</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Locket">Payele</a></div>
+                        <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.PayeleQnt)</h6></div>
+                    </div>
+                    @*<button class="dropdown-btn">
+                            Dropdown
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-container">
+                            <a href="#">Link 1</a>
+                            <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                        </div>*@
+                </div>
             </div>
-            <div class="row">
-                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="FingerRing">Finger Ring</a></div>
-                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.FingerRingQnt)</h6></div>
-            </div>
-            <div class="row">
-                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Bracelet">Bracelet</a></div>
-                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.BraceletQnt)</h6></div>
-            </div>
-            <div class="row">
-                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Locket">Locket</a></div>
-                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.LocketeQnt)</h6></div>
-            </div>
-            <div class="row">
-                <div class="col-8"><a asp-area="" asp-controller="Home" asp-action="Locket">Payele</a></div>
-                <div class="col-4"><h6 style="margin-top: 10px; margin-right: 5px">(@ViewBag.PayeleQnt)</h6></div>
-            </div>
-            @*<button class="dropdown-btn">
-                    Dropdown
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-container">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>*@
-        </div>
-    </div>
+        }
+    }
+
     <style>
         .sidenav {
             margin-top: 20px;
